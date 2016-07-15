@@ -4,38 +4,38 @@ Copyright (c) 2010 - 2016 Robin Herbots Licensed under the MIT license ([http://
 
 [![NPM Version][npm-image]][npm-url] [![Dependency Status][david-image]][david-url] [![devDependency Status][david-dev-image]][david-dev-url]
 
-jquery.inputmask is a jQuery plugin which creates an input mask.
+jquery.inputmask это jQuery плагин для создании маски ввода.
 
-An inputmask helps the user with the input by ensuring a predefined format. This can be useful for dates, numerics, phone numbers, ...
+Маска ввода помогает пользователю с вводом, обеспечивая заранее определенный формат. Это может быть полезно для дат, числел, номеров телефонов...
 
-Highlights:
-- easy to use
-- optional parts anywere in the mask
-- possibility to define aliases which hide complexity
-- date / datetime masks
-- numeric masks
-- lots of callbacks
-- non-greedy masks
-- many features can be enabled/disabled/configured by options
-- supports readonly/disabled/dir="rtl" attributes
-- support data-inputmask attribute(s)
-- alternator-mask
-- regex-mask
-- dynamic-mask
-- preprocessing-mask
+Ососбенности:
+- легкое использование
+- опциональные части маски
+- возможность определить псевдоним, который будет скрывать символы маски
+- маски для даты и времени
+- маски для чисел
+- много функций обратного вызова
+- non-greedy маски
+- многие функции можно включить/отключить, сконфигурировать опционально
+- поддержка readonly/disabled/dir="rtl" атрибутов
+- поддержка data-inputmask атрибутов
+- генератор - маска
+- регулярные выражения в маске
+- динамические маски
+- предварительная обработка масок
 - JIT-masking
-- value formatting / validating without input element
-- AMD/CommonJS support
-- dependencyLibs: vanilla javascript, jQuery, jqlite
+- форматирование значений / проверка без поля ввода
+- поддержка AMD/CommonJS
+- библиотеки зависимостей: vanilla javascript, jQuery, jqlite
 
 Demo page see [http://robinherbots.github.io/jquery.inputmask](http://robinherbots.github.io/jquery.inputmask)
 
 [![donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZNR3EB6JTMMSS)
 
-## Usage:
-Include the js-files which you can find in the `dist` folder.
+## Применение:
+Подключите JS файлы, которые вы можете найти в папке `dist`.
 
-via Inputmask class
+с помощью класса Inputmask
 
 ```html
 <script src="jquery.js"></script>
@@ -54,7 +54,7 @@ Inputmask("9-a{1,3}9{1,3}").mask(selector);
 Inputmask("9", { repeat: 10 }).mask(selector);
 ```
 
-via jquery plugin
+с помощью jquery плагина
 
 ```html
 <script src="jquery.js"></script>
@@ -63,7 +63,7 @@ via jquery plugin
 <script src="jquery.inputmask.js"></script>
 ```
 
-or with the bundled version
+или с помощью входящей в комлект поставки версии
 
 ```html
 <script src="jquery.js"></script>
@@ -78,7 +78,7 @@ $(document).ready(function(){
 });
 ```
 
-via data-inputmask attribute
+с помощью data-inputmask атрибута
 
 ```html
 <input data-inputmask="'alias': 'date'" />
@@ -94,7 +94,7 @@ $(document).ready(function(){
 });
 ```
 
-Any option can also be passed through the use of a data attribute. Use data-inputmask-<**_the name of the option_**>="value"
+Любая опция также может быть передана через использование data-атрибута. Используйте data-inputmask-<**_имя опции_**>="value"
 
 ```html
 <input id="example1" data-inputmask-clearmaskonlostfocus="false" />
@@ -108,7 +108,7 @@ $(document).ready(function(){
 });
 ```
 
-If you like to automatically bind the inputmask to the inputs marked with the data-inputmask- ... attributes you may also want to include the inputmask.binding.js
+Если вы хотите автоматически привязать маску ввода для отметки ввода с data-inputmask- ... атрибутами, вы можете включить inputmask.binding.js
 
 ```html
 ...
@@ -116,9 +116,9 @@ If you like to automatically bind the inputmask to the inputs marked with the da
 ...
 ```
 
-If you use a module loader like requireJS
+Если вы используете модуль загрузки requireJS
 
-Add in your config.js
+Добавьте в ваш config.js
 
 ```javascript
 paths: {
@@ -129,32 +129,32 @@ paths: {
 }
 ```
 
-As dependencyLib you can choose between the supported libraries.
+Библиотеки зависимостей вы можете выбрать между поддерживаемыми библиотеками.
 - inputmask.dependencyLib (vanilla)
 - inputmask.dependencyLib.jquery
 - inputmask.dependencyLib.jqlite
-- .... (others are welcome)
+- .... (другие приветствуются)
 
-### Allowed HTML-elements
+### Разрешенные HTML-элементы
 - `<input type="text">`
 - `<input type="tel">`
 - `<input type="password">`
-- `<div contenteditable="true">` (and all others supported by contenteditable)
+- `<div contenteditable="true">` (и все остальные при поддержке contenteditable)
 - `<textarea>`
-- any html-element (mask text content or set maskedvalue with jQuery.val)
+- любой html-элемент (текстовое содержимое маски или установка значения маски с jQuery.val)
 
-The allowed input types are defined in the supportsInputType option. Also see ([input-type-ref])
+Допустимые типы ввода определяются в опции supportsInputType. Также смотрите ([input-type-ref])
 
-### Default masking definitions
-- `9` : numeric
-- `a` : alphabetical
-- `*` : alphanumeric
+### Символы для маски по умолчанию
+- `9` : цифры
+- `a` : буквы алфавита
+- `*` : буквы и цифры
 
-There are more definitions defined within the extensions.<br>You can find info within the js-files or by further exploring the options.
+Есть несколько символов для маски ввода, определенных в ваших расширениях.<br>Вы можете найти информацию в JS-файлах или путем дальнейшего изучения опций.
 
-## Masking types
-### Static masks
-These are the very basic of masking.  The mask is defined and will not change during the input.
+## Типы масок
+### Статические маски
+Это очень простой базовый тип маски. Маска определяется и не будет меняться во время ввода.
 
 ```javascript
 $(document).ready(function(){
@@ -163,23 +163,23 @@ $(document).ready(function(){
 });
 ```
 
-### Optional masks
-It is possible to define some parts in the mask as optional.  This is done by using [ ].
+### Дополнительные маски
+Можно определить некоторые части маски, как не обязательные.  Это делается с помощью [ ].
 
-Example:
+Пример:
 
 ```javascript
 $('#test').inputmask('(99) 9999[9]-9999');
 ```
 
-This mask wil allow input like `(99) 99999-9999` or `(99) 9999-9999`.
+Эта маска разрешает ввод как `(99) 99999-9999` или `(99) 9999-9999`.
 
 Input => 12123451234      mask => (12) 12345-1234    (trigger complete)<br>
 Input => 121234-1234      mask => (12) 1234-1234     (trigger complete)<br>
 Input => 1212341234       mask => (12) 12341-234_    (trigger incomplete)
 
-#### skipOptionalPartCharacter
-As an extra there is another configurable character which is used to skip an optional part in the mask.
+#### Пропуск необязательной части символов
+В качестве дополнительного существует еще один конфигурируемый символ, который используется для пропуска дополнительной части в маске.
 
 ```javascript
 skipOptionalPartCharacter: " "
@@ -187,38 +187,38 @@ skipOptionalPartCharacter: " "
 
 Input => 121234 1234      mask => (12) 1234-1234     (trigger complete)
 
-When `clearMaskOnLostFocus: true` is set in the options (default), the mask will clear out the optional part when it is not filled in and this only in case the optional part is at the end of the mask.
+Когда `clearMaskOnLostFocus: true` устанавливается в настройках (по умолчанию), маска уберет необязательную часть, когда она не заполнена, и это только в случае, если необязательная часть находится в конце маски.
 
-For example, given:
+Например:
 
 ```javascript
 $('#test').inputmask('999[-AAA]');
 ```
 
-While the field has focus and is blank, users will see the full mask `___-___`. When the required part of the mask is filled and the field loses focus, the user will see `123`. When both the required and optional parts of the mask are filled out and the field loses focus, the user will see `123-ABC`.
+В то время как поле находится в фокусе или не заполнено, пользователи будут видеть маску `___-___`. Когда требуемая часть маски заполнена и поле теряет фокус, пользователь увидит `123`. Когда обе части - обязательна и не обязательная части маски заполняются и поле теряет фокус, пользователь увидит `123-ABC`.
 
-#### Optional masks with greedy false
-When defining an optional mask together with the greedy: false option, the inputmask will show the smallest possible mask as input first.
+#### Дополнительные части маски с greedy false
+При определении опциональной части маски вместе с greedy: false опцией, inputmask покажет наименьшую возможную часть маски в качестве входных данных первого.
 
 ```javascript
 $(selector).inputmask({ mask: "9[-9999]", greedy: false });
 ```
 
-The initial mask shown will be "**_**" instead of "**_**-____".
+Исходная маска будет показана "**_**" вместо "**_**-____".
 
-### Dynamic masks
-Dynamic masks can change during the input.  To define a dynamic part use { }.
+### Динамические маски
+Динамические маски могут изменяться в процессе ввода.  Для определения динамической части маски используется { }.
 
-{n} => n repeats<br>{n,m} => from n to m repeats
+{n} => n повторов<br>{n,m} => от n до m повторов
 
-Also {+} and {*} is allowed. + start from 1 and * start from 0.
+Кроме того {+} и {*} тоже допускаются. + начинаются с 1 и * начинаются с 0.
 
 ```javascript
 $(document).ready(function(){
-  $(selector).inputmask("aa-9{4}");  //static mask with dynamic syntax
-  $(selector).inputmask("aa-9{1,4}");  //dynamic mask ~ the 9 def can be occur 1 to 4 times
+  $(selector).inputmask("aa-9{4}");    //статическая маска с динамическим синтаксисом
+  $(selector).inputmask("aa-9{1,4}");  //динамическая маска ~ 9 символов могут быть от 1 до 4 раз
 
-  //email mask
+  //email маска
   $(selector).inputmask({
     mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
     greedy: false,
@@ -237,12 +237,12 @@ $(document).ready(function(){
 });
 ```
 
-### Alternator masks
-The alternator syntax is like an **OR** statement.  The mask can be one of the 2 choices specified in the alternator.
+### Генератор маски
+Синтаксис подобен **OR** элементу.  Маска может быть 1 из 2 вариантов, указанных в генераторе.
 
-To define an alternator use the |.<br>ex: "a|9" => a or 9<br>    "(aaa)|(999)" => aaa or 999
+Для того, чтобы определить генератор, используйте |.<br>например: "a|9" => a или 9<br>    "(aaa)|(999)" => aaa или 999
 
-Also make sure to read about the keepStatic option.
+Кроме того, убедитесь, что прочитали о возможностях keepStatic опции.
 
 ```javascript
 $("selector").inputmask("(99.9)|(X)", {
@@ -256,7 +256,7 @@ $("selector").inputmask("(99.9)|(X)", {
 });
 ```
 
-or
+или
 
 ```javascript
 $("selector").inputmask({
@@ -271,54 +271,54 @@ $("selector").inputmask({
 });
 ```
 
-### Preprocessing masks
-You can define the mask as a function which can allow to preprocess the resulting mask.  Example sorting for multiple masks or retrieving mask definitions dynamically through ajax. The preprocessing fn should return a valid mask definition.
+### Предварительная обработка маски
+Вы можете задать маску как функцию, которая может позволить предварительно получить маску. Например, сортировка для нескольких масок или извлечения определений маски динамически с помощью AJAX. Предварительная обработка функции должна возвращать действительное определение маски.
 
 ```javascript
 $(selector).inputmask({ mask: function () { /* do stuff */ return ["[1-]AAA-999", "[1-]999-AAA"]; }});
 ```
 
 ### JIT Masking
-Just in time masking.  With the jitMasking option you can enable jit masking.  The mask will only be visible for the user entered characters.
-Default: false
+Маска в реальном времени.  С помощью опции JIT маски можно включить JIT маску. Маска будет видна для пользователя, только при вводе символов.
+По умолчанию: false
 
-Value can be true or a threshold number or false.
+Значение может быть true или начальное число или false.
 
 ```javascript
 Inputmask("date", { jitMasking: true }).mask(selector);
 ```
 
-## Define custom definitions
-You can define your own definitions to use in your mask.<br>Start by choosing a masksymbol.
+## Определение пользовательского символа маски
+Вы можете определить свои собственные символы для использования в вашей маске. <br> Начните с выбора символа маски.
 
-### validator(chrs, maskset, pos, strict, opts)
-Next define your validator.  The validator can be a regular expression or a function.
+### валидатор(chrs, maskset, pos, strict, opts)
+Затем определите свой валидатор.  Проверка может быть регулярным выражением или функцией.
 
-The return value of a validator can be true,  false or a command object.
+Возвращаемое значение валидатор может быть истинным, ложным или объектом.
 
-#### Options of the command object
-- pos : position to insert
-- c : character to insert
-- caret : position of the caret
-- remove : position(s) to remove
-  - pos or [pos1, pos2]
+#### Опциональные команды
+- pos : позиция для вставки
+- c : символ для вставки
+- caret : позиция каретки
+- remove : позиция (позиции) для удаления
+  - pos или [pos1, pos2]
 
-- insert : position(s) to add :
-  - { pos : position to insert, c : character to insert }
-  - [{ pos : position to insert, c : character to insert }, { ...}, ... ]
+- insert : позиции (позиций) для добавления :
+  - { pos : позиция вставки, c : символ для вставки }
+  - [{ pos : позиция вставки, c : символ для вставки }, { ...}, ... ]
 
 - refreshFromBuffer :
   - true => refresh validPositions from the complete buffer
   - { start: , end: } => refresh from start to end
 
 ### cardinality
-Cardinality specifies how many characters are represented and validated for the definition.
+Cardinality определяет, сколько символов представлены и утверждены для определения.
 
 ### prevalidator(chrs, maskset, pos, strict, opts)
-The prevalidator option is used to validate the characters before the definition cardinality is reached. (see 'j' example)
+Опция предварительной проверки используется для проверки символов перед кардинальным определением, которое будет достигнуто. (См 'J' пример)
 
 ### definitionSymbol
-When you insert or delete characters, they are only shifted when the definition type is the same.  This behavior can be overridden by giving a definitionSymbol. (see example x, y, z, which can be used for ip-address masking, the validation is different, but it is allowed to shift the characters between the definitions)
+При вставке или удалении символов, они смещаются только тогда, когда определение типа является то же самое. Такое поведение может быть отменено, давая definitionSymbol. (См пример х, у, z, который может быть использован для IP-адреса маски, проверка отличается, но допускается сдвиг символов между определениями)
 
 ```javascript
 Inputmask.extendDefinitions({
@@ -346,7 +346,7 @@ Inputmask.extendDefinitions({
   'x': {
     validator: "[0-2]",
     cardinality: 1,
-    definitionSymbol: "i" //this allows shifting values from other definitions, with the same masksymbol or definitionSymbol
+    definitionSymbol: "i" //это позволяет сдвига значениt из других определений, с тем же символом маски или определения символа
   },
   'y': {
     validator: function (chrs, buffer, pos, strict, opts) {
@@ -368,10 +368,10 @@ Inputmask.extendDefinitions({
 ```
 
 ### placeholder
-Specify a placeholder for a definition.
+Укажите заполнитель для определения
 
 ### set defaults
-Defaults can be set as below.
+Значения по умолчанию могут быть установлены, как показано ниже.
 
 ```javascript
 Inputmask.extendDefaults({
@@ -381,7 +381,7 @@ Inputmask.extendDefinitions({
   'A': {
     validator: "[A-Za-z\u0410-\u044F\u0401\u0451\u00C0-\u00FF\u00B5]",
     cardinality: 1,
-    casing: "upper" //auto uppercasing
+    casing: "upper" //автоматический перевод в верхний регистр
   },
   '+': {
     validator: "[0-9A-Za-z\u0410-\u044F\u0401\u0451\u00C0-\u00FF\u00B5]",
@@ -398,7 +398,7 @@ Inputmask.extendAliases({
 });
 ```
 
-But if the property is defined within an alias you need to set it for the alias definition.
+Но если свойство определяется в качестве псевдонима необходимо установить его для определения псевдонима.
 
 ```javascript
 Inputmask.extendAliases({
@@ -409,7 +409,7 @@ Inputmask.extendAliases({
 });
 ```
 
-However, the preferred way to alter properties for an alias is by creating a new alias which inherits from the default alias definition.
+Тем не менее, предпочтительный способ, чтобы изменить свойства псевдонима путем создания нового псевдонима, который наследуется из определения псевдонима по умолчанию.
 
 ```javascript
 Inputmask.extendAliases({
@@ -422,52 +422,52 @@ Inputmask.extendAliases({
 });
 ```
 
-Once defined, you can call the alias by:
+После того, как определено, вы можете вызвать псевдоним с помощью:
 
 ```javascript
 $(selector).inputmask("myNum");
 ```
 
-All callbacks are implemented as options.  This means that you can set general implementations for the callbacks by setting a default.
+Все обратные вызовы реализованы в виде опций. Это означает, что вы можете установить общие для реализации обратных вызовов путем установки по умолчанию.
 
 ```javascript
 Inputmask.extendDefaults({
   onKeyValidation: function(key, result){
     if (!result){
-      alert('Your input is not valid')
+      alert('Ваше введенное значение не верно')
     }
   }
 });
 ```
 
-## Methods:
+## Методы:
 ### mask(elems)
-Create a mask for the input.
+Создание маски ввода
 
 ```javascript
 $(selector).inputmask({ mask: "99-999-99"});
 ```
 
-or
+или
 
 ```javascript
 Inputmask({ mask: "99-999-99"}).mask(document.querySelectorAll(selector));
 ```
 
-or
+или
 
 ```javascript
 Inputmask("99-999-99").mask(document.querySelectorAll(selector));
 ```
 
-or
+или
 
 ```javascript
 var im : new Inputmask("99-999-99");
 im.mask(document.querySelectorAll(selector));
 ```
 
-or
+или
 
 ```javascript
 Inputmask("99-999-99").mask(selector);
@@ -481,7 +481,7 @@ Get the `unmaskedvalue`
 $(selector).inputmask('unmaskedvalue');
 ```
 
-or
+или
 
 ```javascript
 var input = document.getElementById(selector);
@@ -496,14 +496,14 @@ Unmask a given value against the mask.
 var unformattedDate = Inputmask.unmask("23/03/1973", { alias: "dd/mm/yyyy"}); //23031973
 ```
 
-### remove
-Remove the `inputmask`.
+### удаление
+Удаление `inputmask`.
 
 ```javascript
 $(selector).inputmask('remove');
 ```
 
-or
+или
 
 ```javascript
 var input = document.getElementById(selector);
@@ -511,7 +511,7 @@ if (input.inputmask)
   input.inputmask.remove()
 ```
 
-or
+или
 
 ```javascript
 Inputmask.remove(document.getElementById(selector));
@@ -528,7 +528,7 @@ $(document).ready(function(){
 ```
 
 ### hasMaskedValue
-Check whether the returned value is masked or not; currently only works reliably when using jquery.val fn to retrieve the value
+Проверьте маскируется ли возвращаемое значение или нет; В настоящее время только надежно работает при использовании jquery.val функции для извлечения значения
 
 ```javascript
 $(document).ready(function(){
@@ -544,7 +544,7 @@ $(document).ready(function(){
 ```
 
 ### isComplete
-Verify whether the current value is complete or not.
+Проверяет, осуществлен ли полный ввод значения или нет
 
 ```javascript
 $(document).ready(function(){
@@ -555,14 +555,14 @@ $(document).ready(function(){
 ```
 
 ### getmetadata
-The metadata of the actual mask provided in the mask definitions can be obtained by calling getmetadata.  If only a mask is provided the mask definition will be returned by the getmetadata.
+Метаданные фактической маски, представленной в определениях маски может быть получено с помощью вызова getmetadata. Если только маска при условии определения маски будет возвращен getmetadata.
 
 ```javascript
 $(selector).inputmask("getmetadata");
 ```
 
-### setvalue
-The setvalue functionality is to set a value to the inputmask like you would do with jQuery.val, BUT it will trigger the internal event used by the inputmask always, whatever the case. This is particular usefull when cloning an inputmask with jQuery.clone.  Cloning an inputmask is not a fully functional clone.  On the first event (mouseenter, focus, ...) the inputmask can detect if it where cloned an can reactivate the masking.  However when setting the value with jQuery.val there is none of the events triggered in that case.  The setvalue functionality does this for you.
+### установка значения
+SetValue функциональность, чтобы установить значение для inputmask, как вы могли бы сделать с jQuery.val, но это вызовет внутреннее событие, используемый inputmask всегда, в любом случае. Это особенно полезно при клонировании inputmask с jQuery.clone. Клонирование inputmask не является полностью функциональным клоном. На первом случае (MouseEnter, фокус ...) сотрудник inputmask может обнаружить, если он где клонировали может активировать маскирование. Однако при установке значения с jQuery.val не существует ни одно из событий сработавших в этом случае. SetValue функциональность делает это для вас.
 
 ### option(options, noremask)
 Get or set an option on an existing inputmask.
@@ -587,27 +587,27 @@ $("#CellPhone").inputmask("option", {
 })
 ```
 
-### format
-Instead of masking an input element it is also possible to use the inputmask for formatting given values. Think of formatting values to show in jqGrid or on other elements then inputs.
+### Формат
+Вместо того, чтобы маскировать входного элемента также можно использовать для форматирования inputmask для форматирования заданных значений. Подумайте о форматировании значений, чтобы показать в jqGrid или на других элементах затем вводит.
 
 ```javascript
 var formattedDate = Inputmask.format("2331973", { alias: "dd/mm/yyyy"});
 ```
 
 ### isValid
-Validate a given value against the mask.
+Проверка заданного значения по отношению к маске.
 
 ```javascript
 var isValid = Inputmask.isValid("23/03/1973", { alias: "dd/mm/yyyy"});
 ```
 
-## Options:
+## Опции:
 ### placeholder
-Change the mask placeholder.
-Default: "_"
+Изменение маски заполнитель.
+По умолчанию: "_"
 
-Instead of "_", you can change the unfilled characters mask as you like, simply by adding the `placeholder` option.<br>
-For example, `placeholder: " "` will change the default autofill with empty values
+Вместо "_", Вы можете изменить незаполненные символы маски, как вам нравится, просто добавив `placeholder` опцию.<br>
+Например, `placeholder: " "` изменится по умолчанию Автоматическое заполнение.
 
 ```javascript
 $(document).ready(function(){
@@ -615,7 +615,7 @@ $(document).ready(function(){
 });
 ```
 
-or a multi-char placeholder
+или мульти-символьный заполнитель
 
 ```javascript
 $(document).ready(function(){
@@ -623,48 +623,48 @@ $(document).ready(function(){
 });
 ```
 
-### optionalmarker
-Definition of the symbols used to indicate an optional part in the mask.
+### Необязательный маркер
+Определение символов, используемых для указания дополнительного компонента в маске.
 
 ```javascript
 optionalmarker: { start: "[", end: "]" }
 ```
 
-### quantifiermarker
-Definition of the symbols used to indicate a quantifier in the mask.
+### Квантификатор маркер
+Определение символов, используемых для обозначения квантора в маске.
 
 ```javascript
 quantifiermarker: { start: "{", end: "}" }
 ```
 
-### groupmarker
-Definition of the symbols used to indicate a group in the mask.
+### группа маркеров
+Определение символов, используемых для обозначения группы в маске.
 
 ```javascript
 groupmarker: { start: "(", end: ")" }
 ```
 
-### alternatormarker
-Definition of the symbols used to indicate an alternator part in the mask.
+### генератор маркер
+Определение символов, используемых для обозначения генерируемой части в маске.
 
 ```javascript
 alternatormarker: "|"
 ```
 
-### escapeChar
-Definition of the symbols used to escape a part in the mask.
+### escape символ
+Определение символов, используемых, чтобы экранировать части в маске.
 
 ```javascript
 escapeChar: "\\"
 ```
 
-See **escape special mask chars**
+См. **экранирование специальных символов в маске**
 
-### mask
-The mask to use.
+### маска
+Маска для использования.
 
 ### oncomplete
-Execute a function when the mask is completed
+Выполнить функцию, когда завершен ввод маски
 
 ```javascript
 $(document).ready(function(){
@@ -673,7 +673,7 @@ $(document).ready(function(){
 ```
 
 ### onincomplete
-Execute a function when the mask is incomplete.  Executes on blur.
+Выполнить ф-ю, когда маска является не полной.  Выполняется при фокусе.
 
 ```javascript
 $(document).ready(function(){
@@ -682,7 +682,7 @@ $(document).ready(function(){
 ```
 
 ### oncleared
-Execute a function when the mask is cleared.
+Выполнить ф-ю, когда маска очищена.
 
 ```javascript
 $(document).ready(function(){
@@ -691,7 +691,7 @@ $(document).ready(function(){
 ```
 
 ### repeat
-Mask repeat function. Repeat the mask definition x-times.
+Повторение ввода. Повторить символ маски ввода  x-раз.
 
 ```javascript
 $(document).ready(function(){
@@ -700,7 +700,7 @@ $(document).ready(function(){
 ```
 
 ### greedy
-Toggle to allocate as much possible or the opposite. Non-greedy repeat function.
+Toggle to allocate as much possible or the opposite. Non-greedy повторяет функцию.
 
 ```javascript
 $(document).ready(function(){
@@ -708,18 +708,18 @@ $(document).ready(function(){
 });
 ```
 
-With the non-greedy option set to false, you can specify * as repeat.  This makes an endless repeat.
+С помощью non-greedy опции установите false, и вы можете указать * в качестве повтора.  Это делает повторение бесконечным.
 
 ### autoUnmask
-Automatically unmask the value when retrieved.<br>Default: false.
+Автоматическое снятие маски при извлечении значения.<br>По умолчанию: false.
 
-**When setting this option to true the plugin also expects the initial value from the server to be unmasked.**
+**При установке этого параметра в true плагин также ожидает, что начальное значение с сервера unmasked.**
 
 ### removeMaskOnSubmit
-Remove the mask before submitting the form.<br>Default: false
+Снимает маску перед отправкой формы.<br>По умолчанию: false
 
 ### clearMaskOnLostFocus
-Remove the empty mask on blur or when not empty removes the optional trailing part Default: true
+Удаляет пустую маску при фокусе или когда не пустой удаляет необязательный косую часть. По умолчанию: true
 
 ```javascript
 $(document).ready(function(){
@@ -728,10 +728,10 @@ $(document).ready(function(){
 ```
 
 ### insertMode
-Toggle to insert or overwrite input.<br>Default: true.<br>This option can be altered by pressing the Insert key.
+Переключение, чтобы извлечь или переписать ввод.<br>По умолчанию: true.<br>Этот параметр может быть изменен нажатием клавиши Insert.
 
 ### clearIncomplete
-Clear the incomplete input on blur
+Очистить неполный ввод при фокусе
 
 ```javascript
 $(document).ready(function(){
@@ -739,55 +739,55 @@ $(document).ready(function(){
 });
 ```
 
-### aliases
-Definitions of aliases.
+### псевдонимы
+Определение псевдонимов.
 
-With an alias you can define a complex mask definition and call it by using an alias name.  So this is mainly to simplify the use of your masks.  Some aliases found in the extensions are: email, currency, decimal, integer, date, datetime, dd/mm/yyyy, etc.
+С помощью псевдонима вы можете определить сложное определение маски и назовите его, используя имя псевдонима. Так что это в основном для упрощения использования ваших масок. Некоторые псевдонимы найдены в расширений: email, currency, decimal, integer, date, datetime, dd/mm/yyyy, etc.
 
-First you have to create an alias definition.  The alias definition can contain options for the mask, custom definitions, the mask to use etc.
+Во-первых, вы должны создать определение псевдонима. Определение псевдонима может содержать опции для маски, пользовательские определения, маска для использования и т.д.
 
-When you pass in an alias, the alias is first resolved and then the other options are applied.  So you can call an alias and pass another mask to be applied over the alias. This also means that you can write aliases which "inherit" from another alias.
+Когда вы передаете в качестве псевдонима, псевдоним сначала решить, а затем другие опции применяются. Таким образом, вы можете назвать псевдоним и передать другую маску, чтобы наносить поверх псевдонима. Это также означает, что вы можете написать псевдонимы, которые "унаследовать" от другого псевдонима.
 
-Some examples can be found in jquery.inputmask.xxx.extensions.js
+Некоторые примеры можно найти в jquery.inputmask.xxx.extensions.js
 
-use:
+использование:
 
 ```javascript
 $("#date").inputmask("date");
 ```
 
-or
+или
 
 ```javascript
 $("#date").inputmask({ alias: "date"});
 ```
 
-You can also call an alias and extend it with some more options
+Можно также вызвать псевдоним и продлить его еще с некоторыми вариантами
 
 ```javascript
 $("#date").inputmask("date", { "clearIncomplete": true });
 ```
 
-or
+или
 
 ```javascript
 $("#date").inputmask({ alias: "date", "clearIncomplete": true });
 ```
 
-### alias
-The alias to use.
+### псевдоним
+Псевдоним для использования.
 
 ```javascript
 $("#date").inputmask({ alias: "email"});
 ```
 
 ### onKeyDown
-Callback to implement autocomplete on certain keys for example
+Обратный вызов для реализации автозаполнения определенных клавиш, например
 
-Function arguments: event, buffer, caretPos, opts<br>Function return:
+Аргументы функции: event, buffer, caretPos, opts<br>Возвращаемое значение:
 
 ### onBeforeMask
-Executes before masking the initial value to allow preprocessing of the initial value.
+Выполняет перед нанесением масок начальное значение, чтобы обеспечить предварительную обработку исходного значения.
 
 Function arguments: initialValue, opts<br>Function return: processedValue
 
